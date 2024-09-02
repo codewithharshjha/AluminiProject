@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { ExpandableCardDemo } from '../components/ExpandleCardDemo'
+import { ExpandableCardDemo } from '../../components/ExpandleCardDemo'
 import axios from 'axios'
 import { toast, useToast } from '@/components/ui/use-toast'
 import { ToastAction } from '@radix-ui/react-toast'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import JobListCard from '../components/JobListCard'
+import JobListCard from '../../components/JobListCard'
 
 function page() {
     const [AllJob,setAllJob]=useState<JobForm[]>([])

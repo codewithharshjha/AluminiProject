@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export const Card = React.memo(
   ({
@@ -10,7 +11,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: RegisterEvent;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -24,10 +25,11 @@ export const Card = React.memo(
       )}
     >
       <Image
-        src={card.src}
-        alt={card.title}
+        src={card.imageUrl}
+        alt={card.name}
         fill
         className="object-cover absolute inset-0"
+        unoptimized
       />
       <div
         className={cn(
@@ -36,7 +38,7 @@ export const Card = React.memo(
         )}
       >
         <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-          {card.title}
+          {card.name}
         </div>
       </div>
     </div>
@@ -50,19 +52,22 @@ type Card = {
   src: string;
 };
 
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function FocusCards({ cards }: { cards: RegisterEventBackend[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
-      {cards.map((card, index) => (
-        <Card
-          key={card.title}
+      {cards?.map((card, index) => (
+        <Link href={`/AllEvent/${card.id.toString()}`} key={card.id}>
+         <Card
+          key={card.name}
           card={card}
           index={index}
           hovered={hovered}
           setHovered={setHovered}
         />
+        </Link>
+       
       ))}
     </div>
   );

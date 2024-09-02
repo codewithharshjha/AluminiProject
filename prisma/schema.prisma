@@ -21,3 +21,63 @@ model Job{
     jobrole String
     companyname String
 }
+model TempUser {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+  batch     String
+  phone     String
+  otp       String
+}
+model User {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+  batch     String
+  phone     String
+}
+model Event {
+  id        Int    @id @default(autoincrement())
+  name String
+  description String
+  location String
+  imageUrl String
+  date String
+}
+model AdminTempUser {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+ 
+  phone     String
+  otp       String
+}
+model AdminUser {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+ 
+  phone     String
+}
+model EditAluminiProfile {
+   id        Int    @id @default(autoincrement())
+  name  String?
+  lastname String?
+  profession String?
+  imageUrl String?
+  bio String?
+  email String
+}
+model CreateAluminiProfile {
+   id        Int    @id @default(autoincrement())
+  name  String?
+  lastname String?
+  profession String?
+  imageUrl String?
+  bio String?
+  email String @unique
+}
