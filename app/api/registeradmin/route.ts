@@ -53,6 +53,7 @@ export async function GET(request:NextRequest){
         if(admin){
             return NextResponse.json({status:200})
         }
+        return NextResponse.json({status:400,message:'not an admin'})
     } catch (error) {
         return NextResponse.json({stauts:500,message:error})  
     }
